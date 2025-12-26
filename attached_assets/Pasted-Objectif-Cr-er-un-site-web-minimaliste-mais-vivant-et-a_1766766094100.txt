@@ -1,0 +1,130 @@
+Objectif :  Créer un site web minimaliste mais vivant et animé , avec des effets de mouvement fluides et élastiques au survol et au scroll. Le site doit inspirer, être moderne et refléter la spiritualité de l'église. 
+Palette de couleurs :
+
+(blePrincipaux :#011C40(bleu nuit) (bleu profond), #021F59 (bleu nuit)
+
+(bronze), (doré), (blSecondaires : #A6702E (bronze), #D9AA52 (doré), #F2F2F2 (blanc cassé)
+
+🖥️ Structure générale
+Navigation principale (Header)
+4 menus visibles : Accueil , Qui sommes-nous , Faire un don , Nous rejoindre
+
+Menu minimaliste avec effet survol élastique  : le texte s'agrandit légèrement et une ligne dorée ( #D9AA52) glisse sous le menu.
+
+Logo centré ou à gauche, en couleurs principales.
+
+Pied de page
+Contient tous les autres menus secondaires (Leadership, Actualités, Galerie, Enseignement, Programme/Événements, Formation, Mission & Impact).
+
+Animation subtile : apparition en fondu quand on scrolle jusqu'en bas. quand on scrolle jusqu'en bas.
+
+📑 Pages et sections
+1. Accueil
+Image de fond immersive (assemblée, lumière, croix).
+
+Message central : « Bienvenue dans la maison de Dieu » .
+
+Bouton “Tirer mon verset” : animé :
+
+Effet rebond élastique au clic au clic.
+
+Génère un verset aléatoire affiché dans une carte animée (zoom avant + fondu) (zoom avant + fondu).
+
+Option de téléchargement du verset en image PNG avec cadre prédéfini. avec cadre classique.
+
+Scroll animé : les sections apparaissent avec effet parallaxe (texte qui gl (texte qui glisse doucement, images qui se déplacent en profondeur).
+
+2. Qui sommes-nous
+Présentation de l'église  : texte sobre, animé en fondu latéral .
+
+Historique : timeline interactive avec effet scroll horizontal fluide . : timeline interactive avec effet scroll horizontal fluide .
+
+Déclaration de foi : carrousel animé de prières et prophéties. : carrousel animé de prières et prophéties.
+
+Texte sur images avec effet d' animation de saisie (comme si le texte s'écrivait en direct). (comme si le texte s'écrivait en direct).
+
+Prières rédigées à la 2ᵉ personne du singulier« Tu es béni, tu es choisi… » ). ( «Tu es béni, tu es choisi…» ).
+
+Transition fluide entre images avec effet crossfade + zoom léger .
+
+3. Leadership
+Portraits avec effet de survol : :
+
+Photo passe du noir et blanc à la couleur.
+
+Nom et fonction apparaissent avec effet slide-up élastique .
+
+Sections : Apôtre, Assistant Pasteur , Collège des serviteurs, Responsables G10.
+
+4. Faire un don
+Interface claire avec 3 options : Dîme, Offrande, Soutenir un projet.
+
+Boutons animés : effet pulse doré au survol au survol.
+
+Intégration de paiements sécurisés (PayPal, carte, mobile money).
+
+Texte explicatif avec effet scroll révélation  (apparition progressive).
+
+5. Actualités (Pied de page)
+Communiqués, Informations, Témoignages.
+
+Animation : chaque bloc apparaît avec effet card flip au défilement. au défilement.
+
+6. Galerie (Pied de page)
+Photos : effetde maçonnerie grille de maçonnerie animée , zoom au survol.
+
+Vidéos : lecteur intégré avec effet lightbox animé (ouverture fluide). (ouverture fluide).
+
+7. Enseignement (Pied de page)
+Messages audio : lecteur minimaliste avecanimation de vagueanimation de vagues .
+
+Messages vidéo : intégration YouTube/Vimeo avec effet fade-in .
+
+Thèmes : affichés et tags animés (rebond au survol). (rebond au survol).
+
+8. Programme / Événements (Pied de page)
+Cultes hebdomadaires : liste avec effet accordéon animé .
+
+Programmes spéciaux : cartes avec effet survol zoom .
+
+Calendrier annuel : calendrier interactif avec effet élastique glisserélastique.
+
+9. Formation (Pied de page)
+École Tyrannus : section avec effet scroll révélation .
+
+Nouveaux convertis : animation douce (texte qui apparaît comme une lumière progressive).
+
+10. Mission et impact (Pied de page)
+Actions missionnaires, œuvres sociales, projets humanitaires.
+
+Animation : icônes qui apparaissent avec effet rebond-in .
+
+11. Nous rejoindre
+Formulaire animé : champs qui s'ouvrent avec effet élastique expand .
+
+Section bénévolat : texte motivant avec effet fondu + zoom .
+
+Inscription bouton : effet glow doré au survol. au survol.
+
+🎨 Style et design
+Minimaliste mais animé : sobriété dans la structure, richesse : sobriété dans la structure, richesse dans les mouvements.
+
+et (fond et en-tête).Couleurs dominantes : #011C40 et #021F59 (fond et en-tête).
+
+Couleurs secondaires : #A6702E et #D9AA52 (accents, survol, boutons).
+
+Texte : #F2F2F2 (blanc cassé) pour contraste.
+
+Typographie : police moderne, élégante, avec titres en majuscules.
+
+⚙️ Animations globales
+Au survol (hover)  : élasticité, rebond, glow doré.
+
+Au défilement  : parallaxe, fondu en entrée, glissement, retournement de carte .
+
+Transitions  : fluides, avec easing « ease-out-elastic ».
+
+Elasticité  : boutons et cartes réagissent comme des ressorts.
+
+🧭 Résultat attendu
+Un site minimaliste mais vivant , où chaque interaction (clic, défilement, survol) déclenche une animation fluide et élastique. Navigation simple avec 4 menus principaux, tout le reste dans le footer. Expérience immersive, spirituelle et moderne
