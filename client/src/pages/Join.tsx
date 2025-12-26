@@ -43,7 +43,7 @@ const formSchema = z.object({
   firstName: z.string().min(2, "Le prénom doit contenir au moins 2 caractères"),
   lastName: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
   email: z.string().email("Veuillez entrer une adresse email valide"),
-  phone: z.string().min(10, "Veuillez entrer un numéro de téléphone valide"),
+  phone: z.string().min(8, "Veuillez entrer un numéro de téléphone valide"),
   interest: z.string().min(1, "Veuillez sélectionner un centre d'intérêt"),
   message: z.string().optional(),
   newsletter: z.boolean().default(false),
@@ -202,7 +202,7 @@ export default function Join() {
                                         transition={{ type: "spring" }}
                                       >
                                         <Input
-                                          placeholder="Jean"
+                                          placeholder="Koffi"
                                           {...field}
                                           data-testid="input-first-name"
                                         />
@@ -221,7 +221,7 @@ export default function Join() {
                                     <FormLabel>Nom</FormLabel>
                                     <FormControl>
                                       <Input
-                                        placeholder="Dupont"
+                                        placeholder="AHOUANSOU"
                                         {...field}
                                         data-testid="input-last-name"
                                       />
@@ -242,7 +242,7 @@ export default function Join() {
                                     <FormControl>
                                       <Input
                                         type="email"
-                                        placeholder="jean@exemple.fr"
+                                        placeholder="koffi@exemple.bj"
                                         {...field}
                                         data-testid="input-email"
                                       />
@@ -260,7 +260,7 @@ export default function Join() {
                                     <FormLabel>Téléphone</FormLabel>
                                     <FormControl>
                                       <Input
-                                        placeholder="06 12 34 56 78"
+                                        placeholder="+229 97 00 00 00"
                                         {...field}
                                         data-testid="input-phone"
                                       />
@@ -386,7 +386,7 @@ export default function Join() {
                                       />
                                     </FormControl>
                                     <FormLabel className="!mt-0 cursor-pointer">
-                                      Je souhaite recevoir la newsletter
+                                      Je souhaite recevoir les enseignements quotidiens
                                     </FormLabel>
                                   </FormItem>
                                 )}
@@ -436,9 +436,9 @@ export default function Join() {
                     <h3 className="font-semibold">Adresse</h3>
                   </div>
                   <p className="text-muted-foreground text-sm">
-                    123 Rue de la Foi
+                    Quartier Guinkomey
                     <br />
-                    75001 Paris, France
+                    Cotonou, Bénin
                   </p>
                 </Card>
               </AnimatedSection>
@@ -452,9 +452,9 @@ export default function Join() {
                     <h3 className="font-semibold">Horaires</h3>
                   </div>
                   <div className="space-y-2 text-sm text-muted-foreground">
-                    <p>Dimanche : 10h00 - 12h30</p>
-                    <p>Mercredi : 19h00 - 21h00</p>
-                    <p>Vendredi : 19h00 - 21h00</p>
+                    <p>Dimanche : 09h00 - 12h00</p>
+                    <p>Mercredi : 18h00 - 20h00</p>
+                    <p>Vendredi : 18h00 - 20h00</p>
                   </div>
                 </Card>
               </AnimatedSection>
@@ -468,8 +468,8 @@ export default function Join() {
                     <h3 className="font-semibold">Contact</h3>
                   </div>
                   <div className="space-y-2 text-sm text-muted-foreground">
-                    <p>+33 1 23 45 67 89</p>
-                    <p>contact@eglise.fr</p>
+                    <p>+229 97 00 00 00</p>
+                    <p>contact@excellepourchrist.org</p>
                   </div>
                 </Card>
               </AnimatedSection>

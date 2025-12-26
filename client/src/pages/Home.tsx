@@ -1,7 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Sparkles, Music, Users, Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, Sparkles, Music, Users, Heart, ChevronLeft, ChevronRight, Calendar, Clock, Mail, ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { VerseCard } from "@/components/verse/VerseCard";
 import { useToast } from "@/hooks/use-toast";
@@ -21,10 +23,48 @@ const carouselImages = [
   "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768561/photo_2025-12-26_18-01-59_amlnzr.jpg",
 ];
 
+const weeklyProgram = [
+  { day: "Lundi", time: "18h00", activity: "Prière de groupe", description: "Intercession et louange" },
+  { day: "Mercredi", time: "18h00", activity: "Étude biblique", description: "Approfondissement de la Parole" },
+  { day: "Jeudi", time: "18h00", activity: "Cellule de maison", description: "Partage et communion" },
+  { day: "Vendredi", time: "18h00", activity: "Veillée de prière", description: "Nuit de consécration" },
+  { day: "Samedi", time: "16h00", activity: "Répétition chorale", description: "Préparation du culte" },
+  { day: "Dimanche", time: "09h00", activity: "Culte principal", description: "Adoration et enseignement" },
+];
+
+const upcomingEvents = [
+  { title: "21 Jours de Jeûne", date: "1-21 Janvier 2025", type: "Programme spirituel" },
+  { title: "Convention Annuelle", date: "15-17 Février 2025", type: "Événement majeur" },
+  { title: "Camp de Jeunes", date: "Mars 2025", type: "Ministère Jeunesse" },
+];
+
+const blogPosts = [
+  {
+    title: "La puissance de la prière matinale",
+    excerpt: "Découvrez comment commencer votre journée avec Dieu peut transformer votre vie...",
+    date: "20 Déc 2025",
+    category: "Vie spirituelle",
+  },
+  {
+    title: "Marcher dans la foi au quotidien",
+    excerpt: "Des conseils pratiques pour vivre votre foi dans les défis de chaque jour...",
+    date: "18 Déc 2025",
+    category: "Enseignement",
+  },
+  {
+    title: "L'importance de la communauté",
+    excerpt: "Pourquoi nous avons besoin les uns des autres dans notre marche chrétienne...",
+    date: "15 Déc 2025",
+    category: "Communauté",
+  },
+];
+
 export default function Home() {
   const [currentVerse, setCurrentVerse] = useState<Verse | null>(null);
   const [isLoadingVerse, setIsLoadingVerse] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
   const verseRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -61,6 +101,10 @@ export default function Home() {
     }
   }, [toast]);
 
+  const closeVerse = () => {
+    setCurrentVerse(null);
+  };
+
   const downloadVerse = useCallback(async () => {
     if (!currentVerse) return;
 
@@ -91,6 +135,20 @@ export default function Home() {
       });
     }
   }, [currentVerse, toast]);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+
+    setIsSubscribing(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsSubscribing(false);
+    setNewsletterEmail("");
+    toast({
+      title: "Inscription réussie !",
+      description: "Vous recevrez nos enseignements chaque matin.",
+    });
+  };
 
   const scrollToContent = () => {
     window.scrollTo({
@@ -239,12 +297,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={verseRef} className="absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-2xl px-6">
+        <div ref={verseRef}>
           <VerseCard
             verse={currentVerse}
             isLoading={isLoadingVerse}
             onNewVerse={getRandomVerse}
             onDownload={downloadVerse}
+            onClose={closeVerse}
           />
         </div>
 
@@ -257,6 +316,41 @@ export default function Home() {
         >
           <ChevronDown className="w-8 h-8" />
         </motion.button>
+      </section>
+
+      <section className="py-20 bg-card">
+        <div className="container mx-auto px-6">
+          <AnimatedSection animation="fade-up" className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <Mail className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+                Recevez un <span className="text-gradient-gold">enseignement</span> chaque matin
+              </h2>
+              <p className="text-muted-foreground">
+                Inscrivez-vous à notre newsletter pour recevoir une parole inspirante et fortifiante chaque jour dans votre boîte email.
+              </p>
+            </div>
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+              <Input
+                type="email"
+                placeholder="Votre adresse email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                className="flex-1"
+                data-testid="input-newsletter-email"
+              />
+              <Button
+                type="submit"
+                className="gold-glow-hover"
+                disabled={isSubscribing}
+                data-testid="button-newsletter-submit"
+              >
+                {isSubscribing ? "Inscription..." : "S'abonner"}
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </form>
+          </AnimatedSection>
+        </div>
       </section>
 
       <section className="py-24 bg-card relative overflow-hidden">
@@ -304,7 +398,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      <section id="program" className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#011C40] via-[#021F59] to-[#011C40]" />
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
@@ -313,52 +407,143 @@ export default function Home() {
 
         <div className="relative z-10 container mx-auto px-6">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
+            <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
-              Nos <span className="text-gradient-gold">Cultes</span>
+              Programme de la <span className="text-gradient-gold">Semaine</span>
             </h2>
             <p className="text-white/60 text-lg">
               Rejoignez-nous chaque semaine pour des moments de partage et de communion.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                day: "Dimanche",
-                time: "10h00",
-                title: "Culte Principal",
-                description: "Louange, enseignement et communion fraternelle",
-              },
-              {
-                day: "Mercredi",
-                time: "19h00",
-                title: "Étude Biblique",
-                description: "Approfondissement de la Parole de Dieu",
-              },
-            ].map((service, index) => (
-              <AnimatedSection
-                key={service.day}
-                animation={index === 0 ? "fade-left" : "fade-right"}
-                delay={0.2}
-              >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {weeklyProgram.map((item, index) => (
+              <AnimatedSection key={item.day} animation="fade-up" delay={index * 0.1}>
                 <motion.div
-                  className="p-8 rounded-md bg-white/5 backdrop-blur-sm border border-white/10"
+                  className="p-6 rounded-md bg-white/5 backdrop-blur-sm border border-white/10"
                   whileHover={{ scale: 1.03, backgroundColor: "rgba(255,255,255,0.08)" }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  data-testid={`card-service-${index}`}
+                  data-testid={`card-program-${index}`}
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-md bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center border border-primary/30">
-                      <span className="text-primary font-bold text-xl">{service.time}</span>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-md bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center border border-primary/30">
+                      <Clock className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm text-primary uppercase tracking-wider font-medium">
-                        {service.day}
+                        {item.day}
                       </p>
-                      <h3 className="text-xl font-serif font-semibold text-white">{service.title}</h3>
+                      <p className="text-xs text-white/50">{item.time}</p>
                     </div>
                   </div>
-                  <p className="text-white/60">{service.description}</p>
+                  <h3 className="text-lg font-semibold text-white mb-1">{item.activity}</h3>
+                  <p className="text-sm text-white/60">{item.description}</p>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-card">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <AnimatedSection animation="fade-right">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+                Événements <span className="text-gradient-gold">à venir</span>
+              </h2>
+              <div className="space-y-4">
+                {upcomingEvents.map((event, index) => (
+                  <motion.div
+                    key={event.title}
+                    className="p-6 rounded-md bg-background border border-border"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    data-testid={`card-event-${index}`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <span className="text-xs text-primary uppercase tracking-wider font-medium">
+                          {event.type}
+                        </span>
+                        <h3 className="text-lg font-semibold mt-1">{event.title}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">{event.date}</p>
+                      </div>
+                      <ArrowRight className="w-5 h-5 text-primary flex-shrink-0" />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fade-left">
+              <Card className="p-8 bg-gradient-to-br from-primary/20 to-accent/10 border-primary/30">
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                    <Heart className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-serif font-bold mb-4">
+                    Soutenir les 21 jours de jeûne
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Participez à ce temps de consécration en semant dans ce programme spirituel. Votre soutien permet de bénir et d'accompagner des centaines de fidèles.
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button
+                      size="lg"
+                      className="gold-glow-hover"
+                      onClick={() => window.location.href = "/donate"}
+                      data-testid="button-support-program"
+                    >
+                      Semer dans ce programme
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </motion.div>
+                </div>
+              </Card>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-[#011C40]/20 to-background" />
+
+        <div className="relative z-10 container mx-auto px-6">
+          <AnimatedSection animation="fade-up" className="text-center mb-16">
+            <BookOpen className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
+              Notre <span className="text-gradient-gold">Blog</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Découvrez nos derniers articles et enseignements pour nourrir votre foi.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {blogPosts.map((post, index) => (
+              <AnimatedSection key={post.title} animation="fade-up" delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Card className="p-6 h-full" data-testid={`card-blog-${index}`}>
+                    <span className="text-xs text-primary uppercase tracking-wider font-medium">
+                      {post.category}
+                    </span>
+                    <h3 className="text-lg font-semibold mt-2 mb-3">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-muted-foreground">{post.date}</span>
+                      <Button variant="ghost" size="sm" className="text-primary">
+                        Lire plus
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </Button>
+                    </div>
+                  </Card>
                 </motion.div>
               </AnimatedSection>
             ))}

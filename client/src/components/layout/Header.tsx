@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
-import { SiInstagram, SiYoutube, SiTelegram, SiWhatsapp } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -10,13 +9,6 @@ const navItems = [
   { label: "Qui sommes-nous", href: "/about" },
   { label: "Faire un don", href: "/donate" },
   { label: "Nous rejoindre", href: "/join" },
-];
-
-const socialLinks = [
-  { icon: SiInstagram, href: "#", label: "Instagram" },
-  { icon: SiYoutube, href: "#", label: "YouTube" },
-  { icon: SiTelegram, href: "#", label: "Telegram" },
-  { icon: SiWhatsapp, href: "#", label: "WhatsApp" },
 ];
 
 export function Header() {
@@ -40,22 +32,6 @@ export function Header() {
       data-testid="header"
     >
       <div className="container mx-auto px-6 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <span className="text-xs text-muted-foreground uppercase tracking-wider hidden sm:block">Suivez-nous</span>
-          <div className="flex items-center gap-2">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                className="text-muted-foreground hover:text-primary transition-colors"
-                data-testid={`link-social-${social.label.toLowerCase()}`}
-              >
-                <social.icon className="w-4 h-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-
         <Link href="/" data-testid="link-logo">
           <motion.div
             className="flex items-center gap-3 cursor-pointer"
@@ -65,7 +41,7 @@ export function Header() {
             <img
               src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png"
               alt="Excelle pour Christ"
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </motion.div>
         </Link>
@@ -144,7 +120,7 @@ function NavLink({
   return (
     <Link href={href}>
       <motion.span
-        className={`relative px-3 py-2 text-xs font-medium uppercase tracking-wider cursor-pointer block ${
+        className={`relative px-3 py-2 text-sm font-medium uppercase tracking-wider cursor-pointer block ${
           isActive ? "text-primary" : "text-foreground"
         }`}
         whileHover={{ scale: 1.05 }}

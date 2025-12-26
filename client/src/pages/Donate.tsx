@@ -46,15 +46,19 @@ const donationTypes = [
   },
 ];
 
-const suggestedAmounts = [20, 50, 100, 200, 500];
+const suggestedAmounts = [5000, 10000, 25000, 50000, 100000];
 
 export default function Donate() {
   const [selectedType, setSelectedType] = useState<DonationType | null>(null);
   const [amount, setAmount] = useState("");
   const [customAmount, setCustomAmount] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [paymentMethod, setPaymentMethod] = useState("mobile");
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
+
+  const formatCFA = (value: number) => {
+    return new Intl.NumberFormat('fr-FR').format(value);
+  };
 
   const handleDonate = async () => {
     const donationAmount = amount || customAmount;
@@ -74,7 +78,7 @@ export default function Donate() {
     setIsProcessing(false);
     toast({
       title: "Merci pour votre générosité !",
-      description: `Votre ${donationTypes.find((t) => t.id === selectedType)?.title.toLowerCase()} de ${donationAmount}€ a été enregistré.`,
+      description: `Votre ${donationTypes.find((t) => t.id === selectedType)?.title.toLowerCase()} de ${formatCFA(parseInt(donationAmount))} FCFA a été enregistré.`,
     });
 
     setSelectedType(null);
@@ -186,7 +190,7 @@ export default function Donate() {
                     {donationTypes.find((t) => t.id === selectedType)?.title.toLowerCase()}
                   </h3>
 
-                  <div className="grid grid-cols-5 gap-3 mb-6">
+                  <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mb-6">
                     {suggestedAmounts.map((amt) => (
                       <motion.button
                         key={amt}
@@ -196,14 +200,14 @@ export default function Donate() {
                           setAmount(amt.toString());
                           setCustomAmount("");
                         }}
-                        className={`py-3 px-4 rounded-md font-semibold transition-all ${
+                        className={`py-3 px-2 rounded-md font-semibold transition-all text-sm ${
                           amount === amt.toString()
                             ? "bg-primary text-primary-foreground"
                             : "bg-muted hover:bg-muted/80"
                         }`}
                         data-testid={`button-amount-${amt}`}
                       >
-                        {amt}€
+                        {formatCFA(amt)}
                       </motion.button>
                     ))}
                   </div>
@@ -216,17 +220,17 @@ export default function Donate() {
                       <Input
                         id="customAmount"
                         type="number"
-                        placeholder="Montant en euros"
+                        placeholder="Montant en FCFA"
                         value={customAmount}
                         onChange={(e) => {
                           setCustomAmount(e.target.value);
                           setAmount("");
                         }}
-                        className="pr-8"
+                        className="pr-16"
                         data-testid="input-custom-amount"
                       />
-                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                        €
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">
+                        FCFA
                       </span>
                     </div>
                   </div>
@@ -239,18 +243,6 @@ export default function Donate() {
                       className="grid grid-cols-2 gap-4"
                     >
                       <Label
-                        htmlFor="card"
-                        className={`flex items-center gap-3 p-4 rounded-md border cursor-pointer transition-all ${
-                          paymentMethod === "card"
-                            ? "border-primary bg-primary/10"
-                            : "border-border"
-                        }`}
-                      >
-                        <RadioGroupItem value="card" id="card" />
-                        <CreditCard className="w-5 h-5" />
-                        <span>Carte bancaire</span>
-                      </Label>
-                      <Label
                         htmlFor="mobile"
                         className={`flex items-center gap-3 p-4 rounded-md border cursor-pointer transition-all ${
                           paymentMethod === "mobile"
@@ -261,6 +253,18 @@ export default function Donate() {
                         <RadioGroupItem value="mobile" id="mobile" />
                         <Smartphone className="w-5 h-5" />
                         <span>Mobile Money</span>
+                      </Label>
+                      <Label
+                        htmlFor="card"
+                        className={`flex items-center gap-3 p-4 rounded-md border cursor-pointer transition-all ${
+                          paymentMethod === "card"
+                            ? "border-primary bg-primary/10"
+                            : "border-border"
+                        }`}
+                      >
+                        <RadioGroupItem value="card" id="card" />
+                        <CreditCard className="w-5 h-5" />
+                        <span>Carte bancaire</span>
                       </Label>
                     </RadioGroup>
                   </div>
@@ -291,7 +295,7 @@ export default function Donate() {
                   </motion.div>
 
                   <p className="text-xs text-muted-foreground text-center mt-4">
-                    Paiement 100% sécurisé. Un reçu fiscal vous sera envoyé par email.
+                    Paiement 100% sécurisé via Mobile Money ou carte bancaire.
                   </p>
                 </Card>
               </motion.div>
@@ -322,7 +326,7 @@ export default function Donate() {
                   <h3 className="font-semibold mb-2">Aider les plus démunis</h3>
                   <p className="text-muted-foreground text-sm">
                     Une partie de vos dons est consacrée aux actions sociales et à l'aide
-                    aux familles dans le besoin.
+                    aux familles dans le besoin au Bénin.
                   </p>
                 </Card>
               </AnimatedSection>
@@ -332,7 +336,7 @@ export default function Donate() {
                   <h3 className="font-semibold mb-2">Financer les missions</h3>
                   <p className="text-muted-foreground text-sm">
                     Vos contributions soutiennent les missionnaires et les projets
-                    humanitaires à travers le monde.
+                    humanitaires à travers l'Afrique.
                   </p>
                 </Card>
               </AnimatedSection>
