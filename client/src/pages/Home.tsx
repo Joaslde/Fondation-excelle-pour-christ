@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Sparkles, Music, Users, Heart, ChevronLeft, ChevronRight, Calendar, Clock, Mail, ArrowRight, BookOpen, Baby, Church, UserCheck } from "lucide-react";
+import { ChevronDown, Sparkles, Music, Users, Heart, ChevronLeft, ChevronRight, Calendar, Clock, Mail, ArrowRight, BookOpen, Baby, Church, UserCheck, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -670,6 +670,30 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
+
+      <motion.div
+        className="fixed bottom-6 right-6 z-50"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, type: "spring", stiffness: 200 }}
+      >
+        <Button
+          size="lg"
+          className="rounded-full w-16 h-16 shadow-xl gold-glow-hover relative group"
+          onClick={() => {
+            toast({
+              title: "Chat IA bientôt disponible",
+              description: "Cette fonctionnalité sera bientôt disponible. Posez vos questions sur la foi, la religion chrétienne et l'église.",
+            });
+          }}
+          data-testid="button-ai-chat"
+        >
+          <MessageCircle className="w-7 h-7" />
+          <span className="absolute -top-12 right-0 bg-card text-foreground text-xs px-3 py-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-border">
+            Questions sur la foi ?
+          </span>
+        </Button>
+      </motion.div>
     </div>
   );
 }

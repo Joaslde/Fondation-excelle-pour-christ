@@ -67,102 +67,39 @@ export function VerseCard({
                 </button>
               )}
 
-              <div className="flex flex-col md:flex-row min-h-[400px] md:min-h-[350px]">
-                <div className="flex-1 flex items-center justify-center p-8 md:p-12">
-                  <div className="text-center">
-                    <img 
-                      src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png"
-                      alt="Excelle pour Christ"
-                      className="w-32 h-32 mx-auto mb-4 opacity-60"
-                    />
-                    <p className="text-2xl md:text-3xl font-serif italic text-[#011C40]">
-                      Voici la parole de Dieu
-                    </p>
-                    <p className="text-2xl md:text-3xl font-serif italic text-[#011C40]">
-                      pour toi cette année !
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex-1 flex flex-col justify-center p-8 md:p-12">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <h2 className="text-xl md:text-2xl font-bold text-[#011C40] underline underline-offset-4 mb-6 text-center">
-                      VERSET BIBLIQUE
-                    </h2>
-                    
-                    <p
-                      className="text-base md:text-lg leading-relaxed text-[#011C40] text-center mb-4"
-                      data-testid="text-verse"
-                    >
-                      {verse.text}
-                    </p>
-                    
-                    <p
-                      className="text-sm font-semibold text-[#D9AA52] text-center"
-                      data-testid="text-verse-reference"
-                    >
-                      {verse.reference}
-                    </p>
-                  </motion.div>
-                </div>
-              </div>
-
-              <div className="absolute bottom-4 left-4 right-4 flex justify-center">
+              <div className="flex items-center justify-center min-h-[400px] md:min-h-[450px] p-8 md:p-12">
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-center max-w-xl"
                 >
-                  <Button
-                    size="default"
-                    onClick={onDownload}
-                    className="bg-[#D9AA52] hover:bg-[#A6702E] text-white"
-                    data-testid="button-download-verse"
+                  <p
+                    className="text-lg md:text-xl leading-relaxed text-[#011C40] mb-6"
+                    data-testid="text-verse"
                   >
-                    <Download className="w-4 h-4 mr-2" />
-                    Télécharger
-                  </Button>
+                    {verse.text}
+                  </p>
+                  
+                  <p
+                    className="text-base font-semibold text-[#D9AA52]"
+                    data-testid="text-verse-reference"
+                  >
+                    {verse.reference}
+                  </p>
                 </motion.div>
               </div>
 
-              <div className="absolute bottom-8 left-8">
-                <div className="flex gap-1">
-                  {[0, 1, 2].map((i) => (
-                    <motion.div
-                      key={i}
-                      className="text-[#D9AA52]"
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3 + i * 0.1 }}
-                    >
-                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="absolute bottom-8 right-8">
-                <div className="flex gap-1">
-                  {[0, 1, 2].map((i) => (
-                    <motion.div
-                      key={i}
-                      className="text-[#D9AA52]"
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3 + i * 0.1 }}
-                    >
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                    </motion.div>
-                  ))}
-                </div>
+              <div className="absolute bottom-6 left-0 right-0 flex justify-center">
+                <Button
+                  size="default"
+                  onClick={onDownload}
+                  className="bg-[#D9AA52] hover:bg-[#A6702E] text-white"
+                  data-testid="button-download-verse"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Télécharger
+                </Button>
               </div>
             </div>
           </motion.div>

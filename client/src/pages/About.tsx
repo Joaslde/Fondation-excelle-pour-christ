@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Card } from "@/components/ui/card";
-import { Heart, Users, BookOpen, Star, Globe, HandHeart, Church, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Heart, Users, BookOpen, Star, Globe, HandHeart, Church, Award, Mail, Phone, X } from "lucide-react";
 
 const logoUrl = "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png";
 
@@ -115,6 +117,19 @@ const churches = [
   "Okouta Ossé", "Comé", "Azove", "Ouidah", "Pahou", "Cococodji", "Pk10", "Ketou", "Idigny", "Adjagbo",
 ];
 
+const responsablesG10 = [
+  "Pst AMOUSSA Elias", "AGON Félicienne", "ACLEHINTO Faoziath", "TCHANKA Priscille", "YOUBOE Franckel",
+  "Proph d'OLIVEIRA Boris", "Pst. AHO Marius", "AHO Euphrasie", "ADANDJEHOUNDE Flora", "ACLEHINTO Lyonel",
+  "ALE GOMINA Muttaleb", "OSSE Gwendal", "Past HOUNGBO Yanik", "OUENDO Florence", "ZOUNMENOU Barthélémy",
+  "AMOUSSA Monrayo", "HOUNGBO Irène", "FASSIA Kétsia", "NOUKPO Yolande", "SID Jude",
+  "Pst LAO Sam", "TOGBEVI Appolos", "BALLEY Alexis", "MITOSSEDE Philibert", "APLOGAN Sylvie",
+  "HOUNSINOU Cyriaque", "BENON Claudia", "YABI Élise", "Pst ZOUMENOU Eléonore", "KPODJEDO Pélagie",
+  "DAZOUNDJI Célestine", "MEGBLETO Cyprien", "TAMADAHO Carine", "Proph JAMES Joaline", "OSSE Victoire",
+  "Dr. CHAHOUNKA Séraphin", "AISSI Luc", "APLOGAN Roselyne", "ATINMADJEGANGNI Paulin", "LAADE Justin",
+  "AGBESSADJI Clotilde", "AVOCEGAMOU Augustin", "Pst. CHAHOUNKA Odette", "SID Justin", "COCO Fernande",
+  "AWOKOU Fidélia", "AMOUZOUN Cathérine", "AGBETOU Alimath", "MEGBLETO Dorcas", "ZANKLAN Louise", "Pst. ACACHA Huguette"
+];
+
 const historyEvents = [
   {
     date: "05 Avril 2001",
@@ -155,6 +170,8 @@ const historyEvents = [
 ];
 
 export default function About() {
+  const [showG10Modal, setShowG10Modal] = useState(false);
+
   return (
     <div className="min-h-screen">
       <section className="relative py-32 overflow-hidden">
@@ -451,11 +468,85 @@ export default function About() {
                 />
                 <h3 className="text-lg font-serif font-bold text-white">Le Couple Apostolique</h3>
                 <p className="text-sm text-white/60 mt-2">Apôtre Janine AHO et Contre-Amiral Patrick AHO</p>
+                <Button
+                  className="mt-4 bg-primary hover:bg-primary/80"
+                  onClick={() => setShowG10Modal(true)}
+                  data-testid="button-voir-g10"
+                >
+                  <Users className="w-4 h-4 mr-2" />
+                  Voir les Responsables G10
+                </Button>
               </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection animation="fade-up" delay={0.6} className="mt-8">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button
+                variant="outline"
+                className="border-primary/50 text-white hover:bg-primary/20"
+                onClick={() => window.location.href = "tel:+22901968164"}
+                data-testid="button-contacter-secretariat"
+              >
+                <Phone className="w-4 h-4 mr-2" />
+                Contacter le secrétariat
+              </Button>
+              <Button
+                variant="outline"
+                className="border-accent/50 text-white hover:bg-accent/20"
+                onClick={() => window.location.href = "mailto:contact@excellepourchrist.org?subject=Courrier%20%C3%A0%20l%27Ap%C3%B4tre%20Janine%20AHO"}
+                data-testid="button-courrier-apotre"
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                Adressez un courrier à l'Apôtre
+              </Button>
             </div>
           </AnimatedSection>
         </div>
       </section>
+
+      <AnimatePresence>
+        {showG10Modal && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setShowG10Modal(false)}
+            />
+            <motion.div
+              className="relative bg-[#011C40] border border-primary/30 rounded-md p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+            >
+              <button
+                onClick={() => setShowG10Modal(false)}
+                className="absolute top-4 right-4 text-white/60 hover:text-white"
+                data-testid="button-close-g10"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <h3 className="text-2xl font-serif font-bold text-white mb-6 text-center">
+                Responsables <span className="text-primary">G10</span>
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {responsablesG10.map((name, index) => (
+                  <div
+                    key={index}
+                    className="p-3 bg-white/5 rounded-md text-center"
+                  >
+                    <p className="text-sm text-white/80">{name}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

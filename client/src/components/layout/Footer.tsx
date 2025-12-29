@@ -26,8 +26,8 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: SiFacebook, href: "#", label: "Facebook", color: "hover:text-blue-500" },
-  { icon: SiInstagram, href: "#", label: "Instagram", color: "hover:text-pink-500" },
+  { icon: SiFacebook, href: "https://www.facebook.com/share/1VrR133EKa/", label: "Facebook", color: "hover:text-blue-500" },
+  { icon: SiInstagram, href: "https://www.instagram.com/fondationexcelle?igsh=ajE2eWRrNGJrYnFl", label: "Instagram", color: "hover:text-pink-500" },
   { icon: SiYoutube, href: "#", label: "YouTube", color: "hover:text-red-500" },
   { icon: SiTiktok, href: "#", label: "TikTok", color: "hover:text-white" },
   { icon: SiTelegram, href: "#", label: "Telegram", color: "hover:text-blue-400" },
@@ -124,7 +124,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3 text-white/60">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-sm">+229 97 00 00 00</span>
+                <span className="text-sm">+229 01 96 81 64 96</span>
               </div>
               <div className="flex items-center gap-3 text-white/60">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />

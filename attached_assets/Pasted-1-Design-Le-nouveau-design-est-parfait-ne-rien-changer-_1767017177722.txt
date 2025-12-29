@@ -1,0 +1,163 @@
+1. Design
+Le nouveau design est parfait : ne rien changer à ce niveau.
+
+2. Fonctionnalités
+Les nouvelles fonctionnalités et boutons ne marchent pas tous encore.
+
+Faire en sorte que tout fonctionne correctement et renvoie vers la fonctionnalité ou la page dédiée de manière cohérente.
+
+Revoir toutes les fonctionnalités du site web pour qu’elles marchent aussi bien sur téléphone que sur ordinateur.
+
+3. Section « Couple apostolique »
+Ajouter un bouton en bas de cette section pour voir la liste des Responsables G10.
+
+La liste des responsables G10 est la suivante :
+
+Responsables G10 :
+
+Pst AMOUSSA Elias
+
+AGON Félicienne
+
+ACLEHINTO Faoziath
+
+TCHANKA Priscille
+
+YOUBOE Franckel
+
+Proph d'OLIVEIRA Boris
+
+Pst. AHO Marius
+
+AHO Euphrasie
+
+ADANDJEHOUNDE Flora
+
+ACLEHINTO Lyonel
+
+ALE GOMINA Muttaleb
+
+OSSE Gwendal
+
+Past HOUNGBO Yanik
+
+OUENDO Florence
+
+ZOUNMENOU Barthélémy
+
+AMOUSSA Monrayo
+
+HOUNGBO Irène
+
+FASSIA Kétsia
+
+NOUKPO Yolande
+
+SID Jude
+
+Pst LAO Sam
+
+TOGBEVI Appolos
+
+BALLEY Alexis
+
+MITOSSEDE Philibert
+
+APLOGAN Sylvie
+
+HOUNSINOU Cyriaque
+
+BENON Claudia
+
+YABI Élise
+
+Pst ZOUMENOU Eléonore
+
+KPODJEDO Pélagie
+
+DAZOUNDJI Célestine
+
+MEGBLETO Cyprien
+
+TAMADAHO Carine
+
+Proph JAMES Joaline
+
+OSSE Victoire
+
+Dr. CHAHOUNKA Séraphin
+
+AISSI Luc
+
+APLOGAN Roselyne
+
+ATINMADJEGANGNI Paulin
+
+LAADE Justin
+
+AGBESSADJI Clotilde
+
+AVOCEGAMOU Augustin
+
+Pst. CHAHOUNKA Odette
+
+SID Justin
+
+COCO Fernande
+
+AWOKOU Fidélia
+
+AMOUZOUN Cathérine
+
+AGBETOU Alimath
+
+MEGBLETO Dorcas
+
+ZANKLAN Louise
+
+Pst. ACACHA Huguette
+
+4. Versets bibliques
+Le verset ne s’affiche toujours pas bien.
+
+Le fond fourni contient déjà tout ce qu’il faut, en dehors des versets qui apparaissent de manière aléatoire.
+
+Supprimer les textes ajoutés tels que :
+
+“Voici la parole de Dieu pour toi cette année !”
+
+“VERSET BIBLIQUE”
+
+Le logo supplémentaire.
+
+Garder uniquement le fond et les versets.
+
+5. Footer
+Changer le numéro affiché par : 0196816496.
+
+6. Collège des serviteurs
+Immédiatement après le collège des serviteurs, ajouter :
+
+Un bouton “Contacter le secrétariat”.
+
+Un bouton “Adressez un courrier à l’apôtre Janine AHO” (après sa présentation).
+
+7. Page d’accueil
+Ajouter un bouton de chat IA.
+
+Texte du bouton reformulé ainsi :
+
+“Posez vos questions sur la foi, la religion chrétienne et l’église.”
+
+8. Synthèse
+Cette correction porte principalement sur :
+
+Les fonctionnalités et boutons (assurer leur bon fonctionnement).
+
+Les nouvelles pages et sections liées au design (Responsables G10, secrétariat, courrier à l’apôtre, chat IA).
+
+La correction de l’affichage des versets.
+
+La mise à jour du footer avec le bon numéro.
+
+La validation du design (aucun changement à apporter).
