@@ -1,44 +1,156 @@
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Card } from "@/components/ui/card";
-import { Heart, Users, BookOpen, Star } from "lucide-react";
+import { Heart, Users, BookOpen, Star, Globe, HandHeart, Church, Award } from "lucide-react";
+
+const logoUrl = "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png";
 
 const leaders = [
-  "Pasteure Huguette ACACHA",
-  "Pasteure Euphrasie AHO",
-  "Pasteur Marius AHO",
-  "Pasteure Éléonore ZOUNMENOU",
-  "Pasteur Gwendal OSSE",
-  "Pasteure CHAHOUNKA Odette",
-  "Prophète Boris D'OLIVEIRA",
-  "Prophète Cyriaque HOUNSINOU",
-  "Prophétesse Joaline James",
-  "Prophétesse Victoire OSSE",
-  "Docteur Chahounka Séraphin",
-  "Apôtre Elias AMOUSSA",
-  "Pasteur Yanik HOUNGBO",
+  {
+    name: "Prophète Cyriaque HOUNSINOU",
+    description: "Intercesseur persévérant et enseignant patient",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007303/photo_2025-12-29_12-21-01_maxmvm.jpg",
+  },
+  {
+    name: "Pasteur Mutalleb GOMINA",
+    description: "Leadership pastoral bienveillant",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007296/photo_2025-12-29_12-20-55_fwdr13.jpg",
+  },
+  {
+    name: "Pasteure Françoise TOFFA",
+    description: "Servante dévouée et compatissante",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007314/photo_2025-12-29_12-20-48_o0kwrp.jpg",
+  },
+  {
+    name: "Prophétesse Claudia BENON",
+    description: "Voix prophétique et encourageante",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007384/photo_2025-12-29_12-20-41_vsicrl.jpg",
+  },
+  {
+    name: "Pasteur Sam LAO",
+    description: "Enseignant fidèle de la Parole",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007297/photo_2025-12-29_12-20-33_ijncli.jpg",
+  },
+  {
+    name: "Prophétesse Joaline JAMES",
+    description: "Intercesseur passionné pour les âmes",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007297/photo_2025-12-29_12-20-24_iffyc1.jpg",
+  },
+  {
+    name: "Apôtre Elias AMOUSSA",
+    description: "Homme de vision et d'action",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007681/480518246_612821551368938_5648666174098026126_n_xg7wry.jpg",
+  },
+  {
+    name: "Évangéliste COCO Fernande",
+    description: "Passionnée pour l'évangélisation",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007688/514308477_709654841685608_3833446210879277504_n_xdl5ic.jpg",
+  },
+  {
+    name: "Docteur CHAHOUNKA Séraphin",
+    description: "Enseignant érudit et sage",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007703/603878608_845574508093640_2706517759738635183_n_qo5fmb.jpg",
+  },
+  {
+    name: "Pasteure Euphrasie AHO",
+    description: "Servante humble et fidèle",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007672/480277386_612202498097510_8773660056191443748_n_aicuma.jpg",
+  },
+  {
+    name: "Prophétesse Victoire OSSE",
+    description: "Femme de prière et de foi",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007687/492992529_664131249571301_1105889650415845183_n_zwizyf.jpg",
+  },
+  {
+    name: "Pasteur Marius AHO",
+    description: "Berger attentif et dévoué",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007693/525547656_733502642634161_6536859824729186157_n_ehqhqe.jpg",
+  },
+  {
+    name: "Prophète Boris D'OLIVEIRA",
+    description: "Voix prophétique audacieuse",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007694/556877275_778856381432120_3011736033028012044_n_qozl5f.jpg",
+  },
+  {
+    name: "Docteur Patrick AHO",
+    description: "Docteur de la Parole",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009123/photo_2025-12-29_12-51-32_sgk0zo.jpg",
+  },
+  {
+    name: "Pasteure Huguette ACACHA",
+    description: "Servante aimante et attentionnée",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767008134/photo_2025-12-27_17-59-09_bt3yfn.jpg",
+  },
+  {
+    name: "Prophète Francis BENON",
+    description: "Homme de foi inébranlable",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767008141/photo_2025-12-27_17-59-09_2_xnzabn.jpg",
+  },
+  {
+    name: "Pasteur Gwendal OSSE",
+    description: "Pasteur dynamique et engagé",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007700/557731701_785126300805128_967292843510034901_n_gvc6ul.jpg",
+  },
+  {
+    name: "Pasteur Yanik HOUNGBO",
+    description: "Serviteur zélé et discipliné",
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007699/555527958_778856754765416_3567995304576630408_n_w1mykj.jpg",
+  },
 ];
 
 const values = [
+  "L'Amour pour Dieu, pour l'être humain et la compassion pour la misère du prochain",
+  "La communion fraternelle",
+  "La vie de prière",
+  "Le respect de la famille selon les Saintes Écritures",
+  "L'obéissance à la Parole de Dieu",
+  "L'humilité",
+  "La sincérité",
+  "Le bon témoignage au dehors",
+  "Les prévenances réciproques",
+];
+
+const churches = [
+  "Parakou", "Gogounou", "Bembereke", "Nikki", "Sikki", "Ouèssènè", "Natitingou", "Moukokotamou", "Kaboli", "Assoula",
+  "Okouta Ossé", "Comé", "Azove", "Ouidah", "Pahou", "Cococodji", "Pk10", "Ketou", "Idigny", "Adjagbo",
+];
+
+const historyEvents = [
   {
-    icon: Heart,
-    title: "Amour",
-    description: "Nous croyons que l'amour du Christ relève ceux qui sont tombés et redonne un sens à ceux qui n'en voient plus.",
+    date: "05 Avril 2001",
+    title: "Naissance de l'oeuvre",
+    description: "L'Eglise Excelle pour Christ International, autrefois connue sous le nom Mount Horeb International Fondation, a vu le jour le 5 avril 2001 à Guinkomey, à Cotonou, au Bénin. Le 1er programme a rassemblé 78 personnes.",
+    color: "primary",
   },
   {
-    icon: Users,
-    title: "Communauté",
-    description: "Un lieu où l'on vient tel que l'on est, sans masque, sans jugement, pour reprendre souffle ensemble.",
+    date: "05 Février 2008",
+    title: "Ordination de l'Apôtre Janine AHO",
+    description: "Alors qu'elle officiait sous l'onction prophétique, la Prophétesse Janine AHO a été ordonnée Apôtre par Papa TAMINI du Burkina Faso en présence de son père spirituel, l'apôtre Paul Oumar DIAGOURAGA du Mali.",
+    color: "accent",
   },
   {
-    icon: BookOpen,
-    title: "Foi",
-    description: "Nous ne parlons pas seulement de foi, nous la vivons au quotidien, au contact des réalités humaines.",
+    date: "23 Mars 2008",
+    title: "Naissance de l'Église missionnaire",
+    description: "L'église missionnaire Excelle pour Christ International a vu le jour. Le 1er culte s'est déroulé au Palais de Sports de Kouhounou devant environ 500 personnes.",
+    color: "primary",
   },
   {
-    icon: Star,
-    title: "Excellence",
-    description: "Servir les âmes avec amour et fidélité, en obéissant à l'appel de Dieu avec excellence.",
+    date: "Août 2010",
+    title: "Camp International de la Jeunesse",
+    description: "Organisation du Camp International de la Jeunesse avec papa Mamadou Philippe KARAMBIRI comme orateur principal. Le thème était 'L'Affaire Cozbi'. Ce camp a rassemblé plus de 1000 jeunes.",
+    color: "accent",
+  },
+  {
+    date: "1er Décembre 2013",
+    title: "1er culte à Fifadji",
+    description: "Après 10 ans sur le site des Cheminots à Zongo, le ministère a établi ses quartiers à Fifadji avec la pose de la première pierre de la construction du temple.",
+    color: "primary",
+  },
+  {
+    date: "1er Mars 2020",
+    title: "Nouveau nom: Excelle pour Christ",
+    description: "En pleine crise de la COVID-19, MHIF devient Fondation Excelle pour Christ. L'oeuvre amorce ainsi un virage décisif de son existence.",
+    color: "accent",
   },
 ];
 
@@ -62,7 +174,7 @@ export default function About() {
               Qui <span className="text-gradient-gold">sommes-nous</span> ?
             </h1>
             <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              Excelle pour Christ, c'est avant tout une oeuvre de foi. Un lieu où l'on vient tel que l'on est, sans masque, sans jugement.
+              Excelle pour Christ International, Ex Mount Horeb International Fondation est une oeuvre missionnaire. Elle entend prêcher tout l'évangile à tout l'Homme.
             </p>
           </motion.div>
         </div>
@@ -73,7 +185,7 @@ export default function About() {
           <div className="max-w-4xl mx-auto">
             <AnimatedSection animation="fade-up" className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Un espace de <span className="text-gradient-gold">prière</span> et d'<span className="text-gradient-gold">amour</span>
+                Notre <span className="text-gradient-gold">Mission</span>
               </h2>
             </AnimatedSection>
 
@@ -81,23 +193,39 @@ export default function About() {
               <AnimatedSection animation="fade-right">
                 <div className="space-y-6 text-muted-foreground leading-relaxed">
                   <p className="text-lg">
-                    Ici, nous croyons que <strong className="text-foreground">Dieu restaure les vies</strong>. Nous croyons que l'amour du Christ relève ceux qui sont tombés et redonne un sens à ceux qui n'en voient plus.
+                    Assurer le <strong className="text-foreground">bien-être spirituel et moral</strong> des personnes en difficultés et en particulier à un programme d'intégration. Pour cela, nous envisageons :
                   </p>
-                  <p>
-                    Un espace de prière, d'écoute et d'amour, où chacun peut reprendre souffle et retrouver sa valeur en Dieu.
-                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <Globe className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <span>Faire connaître l'Évangile de Jésus-Christ au monde</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Heart className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <span>Créer des centres de réhabilitation</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <HandHeart className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <span>Apporter de l'aide aux personnes malades</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Church className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <span>Développer des oeuvres partout où besoin sera</span>
+                    </li>
+                  </ul>
                 </div>
               </AnimatedSection>
 
               <AnimatedSection animation="fade-left">
-                <div className="space-y-6 text-muted-foreground leading-relaxed">
-                  <p>
-                    Notre mission est claire : <strong className="text-foreground">conduire les coeurs vers Jésus-Christ</strong> et accompagner les personnes dans leur chemin de guérison et de transformation.
+                <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent/5 border-primary/20">
+                  <h3 className="text-xl font-serif font-bold mb-4 text-primary">Une oeuvre de délivrance</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Excelle pour Christ International est un ministère de délivrance consacré à la restauration complète de l'Homme. Par la puissance de la Parole de Dieu et l'action du Saint-Esprit, le ministère oeuvre à libérer les vies de toute forme d'oppression spirituelle, émotionnelle et sociale.
                   </p>
-                  <p>
-                    Nous allons à la rencontre de ceux que la société oublie souvent : personnes dépendantes, femmes abandonnées, jeunes en difficulté, enfants sans soutien. Nous leur offrons une présence, une parole, une main tendue, et surtout l'espérance.
+                  <p className="text-muted-foreground text-sm leading-relaxed mt-4">
+                    Sous la houlette du Saint Esprit, un programme de prière rassemblait chaque jeudi de 9h à 14h plus de 2000 personnes venues de Cotonou et ses environs avec une grande manifestation de la puissance de Dieu.
                   </p>
-                </div>
+                </Card>
               </AnimatedSection>
             </div>
           </div>
@@ -110,33 +238,118 @@ export default function About() {
         <div className="relative z-10 container mx-auto px-6">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
-              Ce qui nous <span className="text-gradient-gold">anime</span>
+              Nos <span className="text-gradient-gold">Valeurs</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Nous ne parlons pas seulement de foi, nous la vivons au quotidien, au contact des réalités humaines.
-            </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {values.map((value, index) => (
-              <AnimatedSection key={value.title} animation="fade-up" delay={index * 0.1}>
+              <AnimatedSection key={value} animation="fade-up" delay={index * 0.05}>
                 <motion.div
-                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="p-4 rounded-md bg-card border border-border text-center"
+                  whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Card className="p-6 h-full text-center bg-card/80 backdrop-blur-sm">
-                    <motion.div
-                      className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"
-                      whileHover={{ rotate: 10 }}
-                    >
-                      <value.icon className="w-8 h-8 text-primary" />
-                    </motion.div>
-                    <h3 className="text-xl font-serif font-semibold mb-2">{value.title}</h3>
-                    <p className="text-sm text-muted-foreground">{value.description}</p>
-                  </Card>
+                  <Star className="w-6 h-6 text-primary mx-auto mb-2" />
+                  <p className="text-sm text-muted-foreground">{value}</p>
                 </motion.div>
               </AnimatedSection>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-card">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+            <AnimatedSection animation="fade-right">
+              <Card className="p-8 bg-gradient-to-br from-primary/10 to-accent/5 border-primary/20">
+                <HandHeart className="w-12 h-12 text-primary mb-6" />
+                <h3 className="text-2xl font-serif font-bold mb-4">Une oeuvre sociale</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  Au-delà de l'annonce de l'Évangile, Excelle pour Christ International exprime concrètement l'amour de Christ à travers une oeuvre sociale active et engagée.
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  Le ministère de compassion <strong className="text-foreground">« Tabitha »</strong> vient en aide aux personnes démunies, aux prisonniers, ainsi qu'à d'autres couches sociales fragilisées.
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Le <strong className="text-foreground">Comité d'Action Sociale (CAS)</strong> accompagne les membres de la communauté ecclésiale lorsqu'ils traversent des situations difficiles.
+                </p>
+              </Card>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fade-left">
+              <Card className="p-8 bg-gradient-to-br from-accent/10 to-primary/5 border-accent/20">
+                <Globe className="w-12 h-12 text-accent mb-6" />
+                <h3 className="text-2xl font-serif font-bold mb-4">Une église missionnaire</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  Excelle pour Christ International est une église résolument missionnaire, née avec la vision d'annoncer l'Évangile de Jésus-Christ au plus grand nombre.
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  Aujourd'hui, l'église compte <strong className="text-foreground">une vingtaine d'églises implantées</strong> à travers le Bénin.
+                </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {churches.slice(0, 10).map((church) => (
+                    <span key={church} className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-full">
+                      {church}
+                    </span>
+                  ))}
+                  <span className="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">
+                    +{churches.length - 10} autres
+                  </span>
+                </div>
+              </Card>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      <section id="founder" className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#011C40] via-[#021F59] to-[#011C40]" />
+
+        <div className="relative z-10 container mx-auto px-6">
+          <AnimatedSection animation="fade-up" className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-white">
+              La <span className="text-gradient-gold">Fondatrice</span>
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+            <AnimatedSection animation="fade-right">
+              <div className="relative">
+                <img
+                  src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007054/477112229_610578731593220_4662935868068050667_n_nhhq43.jpg"
+                  alt="Apôtre Janine AHO"
+                  className="w-full max-w-md mx-auto rounded-md shadow-2xl"
+                />
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg">
+                  <Award className="w-12 h-12 text-white" />
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fade-left">
+              <div className="text-white/80 space-y-4">
+                <h3 className="text-2xl font-serif font-bold text-primary mb-4">Apôtre Janine AHO</h3>
+                <p className="text-sm leading-relaxed">
+                  Économiste de formation, l'Apôtre Janine AHO est une femme de foi, entièrement consacrée au service de Dieu et profondément engagée dans le développement spirituel et personnel des âmes depuis 2001.
+                </p>
+                <p className="text-sm leading-relaxed">
+                  Titulaire du Certificat d'Études Financières, Économiques et Bancaires (CEFEB) obtenu à Paris en 1992, et d'un MBA délivré par SIUC, Illinois, USA.
+                </p>
+                <p className="text-sm leading-relaxed">
+                  Sur le plan théologique, elle est titulaire d'un <strong className="text-primary">Master of Divinity</strong> obtenu en 2024 à TELEO University (T-NET), Tennessee, États-Unis avec la Mention Excellent.
+                </p>
+                <p className="text-sm leading-relaxed">
+                  Elle a été distinguée <strong className="text-primary">Ambassadrice Mondiale de la Paix</strong> le 7 novembre 2025 par CONACCEE CHAPLAINS, une ONG américaine accréditée auprès des Nations Unies.
+                </p>
+                <div className="pt-4">
+                  <p className="text-xs text-white/50">
+                    Mariée au Contre-Amiral Patrick AHO, ancien Chef d'État-Major Général des Forces Armées Béninoises, et mère de quatre enfants.
+                  </p>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -150,56 +363,37 @@ export default function About() {
           </AnimatedSection>
 
           <div className="max-w-4xl mx-auto">
-            <AnimatedSection animation="fade-up">
-              <div className="relative pl-8 border-l-2 border-primary/30">
-                <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-primary" />
-                
-                <motion.div
-                  className="mb-12"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="text-sm text-primary font-semibold uppercase tracking-wider">5 Avril 2001</span>
-                  <h3 className="text-2xl font-serif font-bold mt-2 mb-4">Naissance de l'oeuvre</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    L'oeuvre Excelle pour Christ International, autrefois connue sous le nom <em>Mount Horeb International Fondation</em>, a vu le jour le 5 avril 2001 à Guinkomey, à Cotonou, au Bénin.
-                  </p>
-                </motion.div>
-
-                <div className="absolute left-0 top-1/2 w-4 h-4 -translate-x-[9px] rounded-full bg-accent" />
-                
-                <motion.div
-                  className="mb-12"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="text-sm text-accent font-semibold uppercase tracking-wider">Fondatrice</span>
-                  <h3 className="text-2xl font-serif font-bold mt-2 mb-4">Apôtre Janine AHO</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Elle est portée depuis ses débuts par la servante de Dieu, l'apôtre Janine AHO, avec un seul objectif : obéir à l'appel de Dieu et servir les âmes avec amour et fidélité.
-                  </p>
-                </motion.div>
-
-                <div className="absolute left-0 bottom-0 w-4 h-4 -translate-x-[9px] rounded-full bg-primary" />
-                
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="text-sm text-primary font-semibold uppercase tracking-wider">Aujourd'hui</span>
-                  <h3 className="text-2xl font-serif font-bold mt-2 mb-4">Une foi vivante</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Aujourd'hui encore, Excelle pour Christ continue d'avancer avec foi, convaincue que chaque vie compte et que Dieu n'a pas dit son dernier mot.
-                  </p>
-                </motion.div>
-              </div>
-            </AnimatedSection>
+            <div className="relative">
+              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/20" />
+              
+              {historyEvents.map((event, index) => (
+                <AnimatedSection key={event.date} animation="fade-up" delay={index * 0.1}>
+                  <motion.div
+                    className={`relative flex flex-col md:flex-row gap-8 mb-12 ${
+                      index % 2 === 0 ? "md:flex-row-reverse" : ""
+                    }`}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="absolute left-4 md:left-1/2 w-4 h-4 -translate-x-1/2 rounded-full bg-primary border-4 border-background z-10" />
+                    
+                    <div className={`flex-1 ${index % 2 === 0 ? "md:text-right md:pr-12" : "md:pl-12"} pl-12 md:pl-0`}>
+                      <span className={`text-sm font-semibold uppercase tracking-wider ${
+                        event.color === "primary" ? "text-primary" : "text-accent"
+                      }`}>
+                        {event.date}
+                      </span>
+                      <h3 className="text-xl font-serif font-bold mt-2 mb-3">{event.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{event.description}</p>
+                    </div>
+                    
+                    <div className="hidden md:block flex-1" />
+                  </motion.div>
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -212,32 +406,54 @@ export default function About() {
         </div>
 
         <div className="relative z-10 container mx-auto px-6">
-          <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+          <AnimatedSection animation="fade-up" className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-white">
               Collège des <span className="text-gradient-gold">Serviteurs</span>
             </h2>
             <p className="text-white/60 max-w-2xl mx-auto">
-              Notre équipe de leaders spirituels dévoués au service de la communauté.
+              Aux côtés de la Fondatrice, plusieurs serviteurs de Dieu notamment des apôtres, prophètes, pasteurs, évangélistes et docteurs sont engagés dans le service de Dieu.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {leaders.map((leader, index) => (
-              <AnimatedSection key={leader} animation="scale" delay={index * 0.05}>
+              <AnimatedSection key={leader.name} animation="scale" delay={index * 0.03}>
                 <motion.div
                   className="p-4 rounded-md bg-white/5 backdrop-blur-sm border border-white/10 text-center"
                   whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   data-testid={`card-leader-${index}`}
                 >
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center text-primary font-bold">
-                    {leader.charAt(0)}
+                  <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary/30">
+                    <img
+                      src={leader.image || logoUrl}
+                      alt={leader.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = logoUrl;
+                      }}
+                    />
                   </div>
-                  <p className="text-sm text-white/80 font-medium">{leader}</p>
+                  <p className="text-sm text-white/90 font-medium mb-1">{leader.name}</p>
+                  <p className="text-xs text-white/50">{leader.description}</p>
                 </motion.div>
               </AnimatedSection>
             ))}
           </div>
+
+          <AnimatedSection animation="fade-up" delay={0.5} className="mt-12">
+            <div className="max-w-md mx-auto">
+              <div className="p-6 rounded-md bg-gradient-to-br from-primary/20 to-accent/10 border border-primary/30 text-center">
+                <img
+                  src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010683/605533087_850589044258853_7709447793809649617_n_gollok.jpg"
+                  alt="Couple Apostolique"
+                  className="w-full max-w-xs mx-auto rounded-md mb-4"
+                />
+                <h3 className="text-lg font-serif font-bold text-white">Le Couple Apostolique</h3>
+                <p className="text-sm text-white/60 mt-2">Apôtre Janine AHO et Contre-Amiral Patrick AHO</p>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
     </div>

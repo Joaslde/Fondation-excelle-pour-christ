@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Heart, Mail, Phone, MapPin } from "lucide-react";
+import { Heart, Mail, Phone, MapPin, Music, Users } from "lucide-react";
 import { SiInstagram, SiYoutube, SiTelegram, SiWhatsapp, SiFacebook, SiTiktok } from "react-icons/si";
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/use-in-view";
@@ -10,6 +10,7 @@ const footerLinks = [
     links: [
       { label: "Accueil", href: "/" },
       { label: "Qui sommes-nous", href: "/about" },
+      { label: "Enseignement", href: "/teachings" },
       { label: "Faire un don", href: "/donate" },
       { label: "Nous rejoindre", href: "/join" },
     ],
@@ -17,9 +18,9 @@ const footerLinks = [
   {
     title: "Ressources",
     links: [
-      { label: "Enseignements", href: "/about#teaching" },
       { label: "Programme", href: "/#program" },
       { label: "Blog", href: "/#blog" },
+      { label: "La Fondatrice", href: "/about#founder" },
     ],
   },
 ];
@@ -33,6 +34,21 @@ const socialLinks = [
   { icon: SiWhatsapp, href: "#", label: "WhatsApp", color: "hover:text-green-500" },
 ];
 
+const ministries = [
+  {
+    title: "Rejoindre la Chorale",
+    description: "Servez Dieu par la louange et l'adoration",
+    icon: Music,
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010074/480442435_613482244636202_2163775223475163300_n_vqz2af.jpg",
+  },
+  {
+    title: "Rejoindre l'Accueil",
+    description: "Accueillez les visiteurs avec chaleur",
+    icon: Users,
+    image: "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010061/482203144_627413513243075_6794549427594719951_n_vdd1nk.jpg",
+  },
+];
+
 export function Footer() {
   const { ref, isInView } = useInView({ threshold: 0.1, once: true });
 
@@ -44,9 +60,48 @@ export function Footer() {
     >
       <div className="container mx-auto px-6">
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+        >
+          {ministries.map((ministry, index) => (
+            <motion.div
+              key={ministry.title}
+              className="relative overflow-hidden rounded-md group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              data-testid={`card-ministry-${index}`}
+            >
+              <div className="aspect-[3/1] relative">
+                <img
+                  src={ministry.image}
+                  alt={ministry.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#011C40]/90 to-[#011C40]/60" />
+                <div className="absolute inset-0 flex items-center p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                      <ministry.icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">{ministry.title}</h3>
+                      <p className="text-sm text-white/60">{ministry.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
         >
           <div className="lg:col-span-1">
@@ -65,7 +120,7 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-white/60">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-sm">Guinkomey, Cotonou, Bénin</span>
+                <span className="text-sm">Fifadji, Cotonou, Bénin</span>
               </div>
               <div className="flex items-center gap-3 text-white/60">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
@@ -83,7 +138,7 @@ export function Footer() {
               key={section.title}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+              transition={{ duration: 0.5, delay: 0.3 + 0.1 * index }}
             >
               <h4 className="font-semibold uppercase tracking-wider text-sm mb-4 text-white">
                 {section.title}
@@ -108,7 +163,7 @@ export function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             <h4 className="font-semibold uppercase tracking-wider text-sm mb-4 text-white">
               Suivez-nous
@@ -137,7 +192,7 @@ export function Footer() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p className="text-sm text-white/40">

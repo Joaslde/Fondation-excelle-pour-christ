@@ -1,0 +1,187 @@
+Script de correction complet et structuré
+✅ Fonctionnalités (validées)
+Les fonctionnalités actuelles sont correctes.
+
+Aucune modification fonctionnelle à faire.
+
+📖 Verset aléatoire (bouton et affichage)
+Bouton discret: conserver uniquement le bouton avec le texte « Tirer mon verset » (sans texte explicatif).
+
+Affichage au premier plan: le verset doit s’afficher clairement (non caché), au-dessus des autres éléments.
+
+Fond obligatoire: utiliser ce fond pour l’affichage du verset:
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767006741/entrer_le_verset_biblique_bq3fnk.jpg
+
+Base de versets: afficher uniquement les versets contenus dans le document Word fourni (base fermée).
+
+Verset unique par utilisateur: supprimer le bouton « Nouveau verset ». Le verset tiré est unique pour chaque utilisateur.
+
+🏠 Page d’accueil (refonte)
+Design: reconstruire le design de la page d’accueil en s’inspirant strictement de l’image fournie par JOEL (style moderne, minimaliste, hyper design).
+
+Menu principal: ajouter « Enseignement » aux 4 menus existants.
+
+Programme de la semaine: afficher les jours et activités pour:
+
+Lundi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche
+
+Programmes à venir: ajouter une section dédiée aux événements futurs.
+
+Bon de soutien (scroll): en descendant, afficher un bon pour le programme en cours:
+
+Exemple: « Soutenir les 21 jours de jeûne — Semez dans ce programme »
+
+Blogs: ajouter une section blogs sur la page d’accueil (voir cartes et images ci-dessous).
+
+Newsletter: déplacer la section « S’abonner à la newsletter » tout en bas, après « Prêt à nous rejoindre ». Objectif: recevoir des enseignements chaque matin par email.
+
+Images à afficher souvent (voeux 2026):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767006976/photo_2025-12-29_12-06-43_nxzfsu.jpg
+
+Autres images à afficher sur la page d’accueil:
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767008141/photo_2025-12-27_17-59-09_2_xnzabn.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010061/515491154_715015711149521_2087526606612619226_n_yrfkf9.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010429/480427078_613484374635989_8502682356498058015_n_rvtubj.jpg
+
+🎨 Identité visuelle et placement
+Logo: placer le logo en haut à gauche.
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png
+
+Footer (Suivez-nous): ajouter une section « Suivez-nous » complète en bas du site avec réseaux sociaux.
+
+Cohérence: garantir une cohérence visuelle globale sur toutes les sections (couleurs, typographies, grilles, marges).
+
+💳 Don (monnaie)
+Les montants de dons doivent être en CFA (Franc CFA).
+
+Types de dons: Dîme, Offrande, Soutenir un projet.
+
+👤 Images prioritaires — Apôtre Janine AHO
+Afficher plus souvent que les autres:
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007054/477112229_610578731593220_4662935868068050667_n_nhhq43.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007049/480433428_613484304635996_36110986917296892_n_obqrwm.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007047/480242065_613484364635990_5047702027247346028_n_kqmy8w.jpg
+
+👥 Collège des serviteurs (photos + mini-descriptions)
+Ajouter chaque serviteur avec:
+
+Photo (liens ci-dessous)
+
+Mini-description: titre + personnalité chrétienne (ex: « Enseignant patient et fidèle », « Intercesseur persévérant », « Leadership pastoral bienveillant », etc.)
+
+Liste et liens:
+
+Prophète Cyriaque HOUNSINOU — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007303/photo_2025-12-29_12-21-01_maxmvm.jpg
+
+Pasteur Mutalleb GOMINA — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007296/photo_2025-12-29_12-20-55_fwdr13.jpg
+
+Pasteure Françoise TOFFA — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007314/photo_2025-12-29_12-20-48_o0kwrp.jpg
+
+Prophétesse Claudia BENON — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007384/photo_2025-12-29_12-20-41_vsicrl.jpg
+
+Pasteur Sam LAO — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007297/photo_2025-12-29_12-20-33_ijncli.jpg
+
+Prophétesse Joaline JAMES — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007297/photo_2025-12-29_12-20-24_iffyc1.jpg
+
+Apôtre Elias AMOUSSA — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007681/480518246_612821551368938_5648666174098026126_n_xg7wry.jpg
+
+Évangéliste COCO Fernande — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007688/514308477_709654841685608_3833446210879277504_n_xdl5ic.jpg
+
+Docteur CHAHOUNKA Séraphin — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007703/603878608_845574508093640_2706517759738635183_n_qo5fmb.jpg
+
+Pasteure Euphrasie AHO — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007672/480277386_612202498097510_8773660056191443748_n_aicuma.jpg
+
+Prophétesse Victoire OSSE — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007687/492992529_664131249571301_1105889650415845183_n_zwizyf.jpg
+
+Pasteur Marius AHO — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007693/525547656_733502642634161_6536859824729186157_n_ehqhqe.jpg
+
+Prophète Boris D’OLIVEIRA — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007694/556877275_778856381432120_3011736033028012044_n_qozl5f.jpg
+
+Docteur Patrick AHO — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009123/photo_2025-12-29_12-51-32_sgk0zo.jpg
+
+Pasteure Huguette ACACHA — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767008134/photo_2025-12-27_17-59-09_bt3yfn.jpg
+
+Prophète Francis BENON — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767008141/photo_2025-12-27_17-59-09_2_xnzabn.jpg
+
+Pasteur Gwendal OSSE — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007700/557731701_785126300805128_967292843510034901_n_gvc6ul.jpg
+
+Pasteur Yanik HOUNGBO — https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007699/555527958_778856754765416_3567995304576630408_n_w1mykj.jpg
+
+Couple apostolique (à ajouter en bas de la section Collège des serviteurs):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010683/605533087_850589044258853_7709447793809649617_n_gollok.jpg
+
+📰 Section Blog (page d’accueil)
+Mariage (article + images):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009920/480098564_611450778172682_6798617492885972987_n_klpftp.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009903/480630458_612061191444974_1348450523764156471_n_tyuihh.jpg
+
+Naissances (article + images):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009906/480876331_612825628035197_639909860806576304_n_sxq1sh.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010066/515436188_715016531149439_4803492833574481698_n_tyxzxj.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010067/555473081_778856814765410_5361985697197409643_n_egzizv.jpg
+
+Baptême: ajouter la section (images à venir ou placeholder).
+
+Jeunesse (article + images):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009905/480332077_612675714716855_7610465832913779808_n_ayirqs.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010101/480425430_613484047969355_6196918662763288291_n_rualw1.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010412/480496998_613484257969334_7886584989356667854_n_igpgsc.jpg
+
+Ados / Enfants (article + images):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010068/518273622_723016867016072_681193536579697104_n_bv3db1.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010057/480495171_613484371302656_8396054715167267095_n_szblns.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009904/480274822_612214551429638_3409764156055112533_n_xgpjjh.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009913/480240698_612214481429645_5879716515371558618_n_zyxuw2.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010101/480425430_613484047969355_6196918662763288291_n_rualw1.jpg
+
+🎶 Footer — menus additionnels
+Rejoindre la chorale (section dans le footer + images):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010074/480442435_613482244636202_2163775223475163300_n_vqz2af.jpg
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010065/513797556_709861071664985_4126914063526980869_n_nslsdw.jpg
+
+Rejoindre l’accueil de l’église (section dans le footer + image):
+
+https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010061/482203144_627413513243075_6794549427594719951_n_vdd1nk.jpg
+
+🧾 Remarques complémentaires
+J'ai ajouté un deuxième fichier Word avec des remarques à appliquer sur les autres pages: intégrer ces remarques sans modifier la structure des pages (seule la page d’accueil est refaite).
+
+Cohérence globale: respecter une cohérence graphique et éditoriale (grilles, marges, couleurs, typographies) sur l’ensemble du site.
+
+🧭 Résultat attendu
+Verset unique par utilisateur, affiché sur le fond fourni, avec un bouton discret « Tirer mon verset ».
+
+Page d’accueil refaite selon l’image de référence: programme de la semaine, programmes à venir, bon de soutien, blogs, newsletter tout en bas.
+
+Logo en haut à gauche, footer avec « Suivez-nous » et menus supplémentaires (chorale et accueil).
+
+Dons en CFA.
+
+Apôtre Janine AHO mise en avant + collège des serviteurs avec photos et mini-descriptions.
+
+Cohérence visuelle solide sur tout le site.

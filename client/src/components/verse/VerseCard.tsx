@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, RefreshCw, BookOpen, X } from "lucide-react";
+import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface VerseCardProps {
@@ -16,7 +16,6 @@ interface VerseCardProps {
 export function VerseCard({
   verse,
   isLoading,
-  onNewVerse,
   onDownload,
   onClose,
 }: VerseCardProps) {
@@ -45,94 +44,129 @@ export function VerseCard({
           />
           
           <motion.div
-            className="relative w-full max-w-lg bg-gradient-to-br from-[#011C40] via-[#021F59] to-[#011C40] border border-primary/30 rounded-md p-8 shadow-2xl"
+            className="relative w-full max-w-3xl overflow-hidden rounded-md shadow-2xl"
             initial={{ scale: 0.8, y: 50 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.8, y: 50 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             data-testid="verse-card"
           >
-            {onClose && (
-              <button
-                onClick={onClose}
-                className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
-                data-testid="button-close-verse"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            )}
-
-            <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
-              <motion.div
-                className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              >
-                <BookOpen className="w-5 h-5 text-primary-foreground" />
-              </motion.div>
-            </div>
-
-            <div className="pt-6">
-              <motion.div
-                className="relative mb-6"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <span className="absolute -left-2 -top-2 text-6xl text-primary/20 font-serif">"</span>
-                <p
-                  className="text-xl md:text-2xl leading-relaxed text-center font-serif italic text-white/90 px-4"
-                  data-testid="text-verse"
-                >
-                  {verse.text}
-                </p>
-                <span className="absolute -right-2 -bottom-4 text-6xl text-primary/20 font-serif">"</span>
-              </motion.div>
-
-              <motion.div
-                className="flex items-center justify-center gap-2 mb-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/50" />
-                <p
-                  className="text-sm text-primary font-semibold uppercase tracking-wider"
-                  data-testid="text-verse-reference"
-                >
-                  {verse.reference}
-                </p>
-                <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/50" />
-              </motion.div>
-            </div>
-
-            <motion.div
-              className="flex items-center justify-center gap-3 pt-6 border-t border-white/10"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+            <div 
+              className="relative w-full"
+              style={{
+                backgroundImage: `url(https://res.cloudinary.com/dmngvz0f4/image/upload/v1767006741/entrer_le_verset_biblique_bq3fnk.jpg)`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
             >
-              <Button
-                variant="outline"
-                size="default"
-                onClick={onNewVerse}
-                disabled={isLoading}
-                className="border-white/20 text-white hover:bg-white/10"
-                data-testid="button-new-verse"
-              >
-                <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? "animate-spin" : ""}`} />
-                Nouveau verset
-              </Button>
-              <Button
-                size="default"
-                onClick={onDownload}
-                className="gold-glow-hover"
-                data-testid="button-download-verse"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Télécharger
-              </Button>
-            </motion.div>
+              {onClose && (
+                <button
+                  onClick={onClose}
+                  className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white/70 hover:text-white hover:bg-black/50 transition-colors"
+                  data-testid="button-close-verse"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
+
+              <div className="flex flex-col md:flex-row min-h-[400px] md:min-h-[350px]">
+                <div className="flex-1 flex items-center justify-center p-8 md:p-12">
+                  <div className="text-center">
+                    <img 
+                      src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png"
+                      alt="Excelle pour Christ"
+                      className="w-32 h-32 mx-auto mb-4 opacity-60"
+                    />
+                    <p className="text-2xl md:text-3xl font-serif italic text-[#011C40]">
+                      Voici la parole de Dieu
+                    </p>
+                    <p className="text-2xl md:text-3xl font-serif italic text-[#011C40]">
+                      pour toi cette année !
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex-1 flex flex-col justify-center p-8 md:p-12">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <h2 className="text-xl md:text-2xl font-bold text-[#011C40] underline underline-offset-4 mb-6 text-center">
+                      VERSET BIBLIQUE
+                    </h2>
+                    
+                    <p
+                      className="text-base md:text-lg leading-relaxed text-[#011C40] text-center mb-4"
+                      data-testid="text-verse"
+                    >
+                      {verse.text}
+                    </p>
+                    
+                    <p
+                      className="text-sm font-semibold text-[#D9AA52] text-center"
+                      data-testid="text-verse-reference"
+                    >
+                      {verse.reference}
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+
+              <div className="absolute bottom-4 left-4 right-4 flex justify-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <Button
+                    size="default"
+                    onClick={onDownload}
+                    className="bg-[#D9AA52] hover:bg-[#A6702E] text-white"
+                    data-testid="button-download-verse"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Télécharger
+                  </Button>
+                </motion.div>
+              </div>
+
+              <div className="absolute bottom-8 left-8">
+                <div className="flex gap-1">
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="text-[#D9AA52]"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.1 }}
+                    >
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="absolute bottom-8 right-8">
+                <div className="flex gap-1">
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="text-[#D9AA52]"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.1 }}
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       )}

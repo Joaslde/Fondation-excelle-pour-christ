@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   { label: "Accueil", href: "/" },
   { label: "Qui sommes-nous", href: "/about" },
+  { label: "Enseignement", href: "/teachings" },
   { label: "Faire un don", href: "/donate" },
   { label: "Nous rejoindre", href: "/join" },
 ];

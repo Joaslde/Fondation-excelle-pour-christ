@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Sparkles, Music, Users, Heart, ChevronLeft, ChevronRight, Calendar, Clock, Mail, ArrowRight, BookOpen } from "lucide-react";
+import { ChevronDown, Sparkles, Music, Users, Heart, ChevronLeft, ChevronRight, Calendar, Clock, Mail, ArrowRight, BookOpen, Baby, Church, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -9,53 +9,101 @@ import { VerseCard } from "@/components/verse/VerseCard";
 import { useToast } from "@/hooks/use-toast";
 import type { Verse } from "@shared/schema";
 
-const carouselImages = [
+const heroImages = [
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007054/477112229_610578731593220_4662935868068050667_n_nhhq43.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007049/480433428_613484304635996_36110986917296892_n_obqrwm.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007047/480242065_613484364635990_5047702027247346028_n_kqmy8w.jpg",
   "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768568/photo_2025-12-26_18-01-34_coqlji.jpg",
   "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-49_lt6oge.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-14_ewh6tz.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-19_gfqld8.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-07_owdmbw.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-54_rksu6y.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768562/photo_2025-12-26_18-01-29_vodgbo.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768562/photo_2025-12-26_18-01-40_g2wvx2.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768562/photo_2025-12-26_18-01-24_hwieor.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768561/photo_2025-12-26_18-02-06_v5npr0.jpg",
-  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768561/photo_2025-12-26_18-01-59_amlnzr.jpg",
 ];
 
 const weeklyProgram = [
   { day: "Lundi", time: "18h00", activity: "Prière de groupe", description: "Intercession et louange" },
   { day: "Mercredi", time: "18h00", activity: "Étude biblique", description: "Approfondissement de la Parole" },
-  { day: "Jeudi", time: "18h00", activity: "Cellule de maison", description: "Partage et communion" },
+  { day: "Jeudi", time: "09h00 - 14h00", activity: "Programme de prière", description: "Grande manifestation de Dieu" },
   { day: "Vendredi", time: "18h00", activity: "Veillée de prière", description: "Nuit de consécration" },
   { day: "Samedi", time: "16h00", activity: "Répétition chorale", description: "Préparation du culte" },
   { day: "Dimanche", time: "09h00", activity: "Culte principal", description: "Adoration et enseignement" },
 ];
 
 const upcomingEvents = [
-  { title: "21 Jours de Jeûne", date: "1-21 Janvier 2025", type: "Programme spirituel" },
-  { title: "Convention Annuelle", date: "15-17 Février 2025", type: "Événement majeur" },
-  { title: "Camp de Jeunes", date: "Mars 2025", type: "Ministère Jeunesse" },
+  { title: "21 Jours de Jeûne", date: "1-21 Janvier 2026", type: "Programme spirituel" },
+  { title: "Convention Annuelle", date: "15-17 Février 2026", type: "Événement majeur" },
+  { title: "Camp de Jeunes", date: "Mars 2026", type: "Ministère Jeunesse" },
 ];
 
 const blogPosts = [
   {
-    title: "La puissance de la prière matinale",
-    excerpt: "Découvrez comment commencer votre journée avec Dieu peut transformer votre vie...",
+    title: "Mariage au sein de l'église",
+    excerpt: "Découvrez les célébrations de mariage bénis par Dieu dans notre communauté...",
     date: "20 Déc 2025",
-    category: "Vie spirituelle",
+    category: "Mariage",
+    icon: Heart,
+    images: [
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009920/480098564_611450778172682_6798617492885972987_n_klpftp.jpg",
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009903/480630458_612061191444974_1348450523764156471_n_tyuihh.jpg",
+    ],
   },
   {
-    title: "Marcher dans la foi au quotidien",
-    excerpt: "Des conseils pratiques pour vivre votre foi dans les défis de chaque jour...",
+    title: "Naissances et bénédictions",
+    excerpt: "La joie de nouvelles vies bénies par le Seigneur dans notre famille spirituelle...",
     date: "18 Déc 2025",
-    category: "Enseignement",
+    category: "Naissances",
+    icon: Baby,
+    images: [
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009906/480876331_612825628035197_639909860806576304_n_sxq1sh.jpg",
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010066/515436188_715016531149439_4803492833574481698_n_tyxzxj.jpg",
+    ],
   },
   {
-    title: "L'importance de la communauté",
-    excerpt: "Pourquoi nous avons besoin les uns des autres dans notre marche chrétienne...",
+    title: "Baptêmes",
+    excerpt: "Les moments sacrés de baptême célébrant l'engagement envers Christ...",
     date: "15 Déc 2025",
-    category: "Communauté",
+    category: "Baptême",
+    icon: Church,
+    images: [
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-14_ewh6tz.jpg",
+    ],
+  },
+  {
+    title: "Ministère Jeunesse",
+    excerpt: "Les activités et moments forts de nos jeunes engagés pour Christ...",
+    date: "12 Déc 2025",
+    category: "Jeunesse",
+    icon: Users,
+    images: [
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767009905/480332077_612675714716855_7610465832913779808_n_ayirqs.jpg",
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010101/480425430_613484047969355_6196918662763288291_n_rualw1.jpg",
+    ],
+  },
+  {
+    title: "Ados et Enfants",
+    excerpt: "L'épanouissement spirituel de nos plus jeunes dans la foi...",
+    date: "10 Déc 2025",
+    category: "Enfants",
+    icon: UserCheck,
+    images: [
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010068/518273622_723016867016072_681193536579697104_n_bv3db1.jpg",
+      "https://res.cloudinary.com/dmngvz0f4/image/upload/v1767010057/480495171_613484371302656_8396054715167267095_n_szblns.jpg",
+    ],
+  },
+];
+
+const missionItems = [
+  {
+    title: "Adoration",
+    description: "Vivre des moments de louange authentiques et profonds, connectés à la présence divine.",
+    icon: Music,
+  },
+  {
+    title: "Communauté",
+    description: "Créer des liens forts et durables au sein d'une famille spirituelle aimante.",
+    icon: Users,
+  },
+  {
+    title: "Service",
+    description: "Impacter positivement notre société à travers des actions concrètes et bienveillantes.",
+    icon: Heart,
   },
 ];
 
@@ -70,17 +118,17 @@ export default function Home() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
   };
 
   const getRandomVerse = useCallback(async () => {
@@ -157,27 +205,9 @@ export default function Home() {
     });
   };
 
-  const missionItems = [
-    {
-      title: "Adoration",
-      description: "Vivre des moments de louange authentiques et profonds, connectés à la présence divine.",
-      icon: Music,
-    },
-    {
-      title: "Communauté",
-      description: "Créer des liens forts et durables au sein d'une famille spirituelle aimante.",
-      icon: Users,
-    },
-    {
-      title: "Service",
-      description: "Impacter positivement notre société à travers des actions concrètes et bienveillantes.",
-      icon: Heart,
-    },
-  ];
-
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImageIndex}
@@ -188,111 +218,132 @@ export default function Home() {
             transition={{ duration: 1.2 }}
           >
             <img
-              src={carouselImages[currentImageIndex]}
+              src={heroImages[currentImageIndex]}
               alt="Excelle pour Christ"
               className="w-full h-full object-cover"
             />
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#011C40]/80 via-[#011C40]/60 to-[#011C40]/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#011C40]/70 via-transparent to-[#011C40]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#011C40]/95 via-[#011C40]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#011C40]/90" />
 
         <div className="relative z-10 container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[90vh] py-24">
             <motion.div
-              className="backdrop-blur-xl bg-[#011C40]/40 border border-white/10 rounded-md p-8 lg:p-12"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-5xl font-bold text-white/20">01</span>
-                <div className="flex gap-1">
-                  {[0, 1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className={`w-2 h-2 rounded-full ${i === 0 ? "bg-primary" : "bg-white/30"}`}
-                    />
-                  ))}
-                </div>
-              </div>
+              <motion.span
+                className="inline-block text-primary text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                Bienvenue chez nous
+              </motion.span>
 
-              <h2 className="text-sm uppercase tracking-[0.3em] text-primary mb-4 font-semibold">
-                Tirer Mon Verset
-              </h2>
+              <h1
+                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-6"
+                data-testid="text-hero-title"
+              >
+                <span className="text-white">Excelle pour</span>
+                <br />
+                <span className="text-gradient-gold">Christ International</span>
+              </h1>
 
-              <p className="text-white/70 mb-8 leading-relaxed">
-                Laissez-vous inspirer par la Parole de Dieu. Cliquez sur le bouton ci-dessous pour recevoir un verset biblique qui parlera à votre coeur aujourd'hui.
+              <p
+                className="text-lg text-white/70 mb-8 max-w-lg"
+                data-testid="text-hero-subtitle"
+              >
+                Une oeuvre de foi, un espace de prière, d'écoute et d'amour où chacun peut reprendre souffle et rencontrer Dieu.
               </p>
 
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <Button
+                    size="lg"
+                    className="text-lg px-8 py-6 gold-glow-hover group"
+                    onClick={getRandomVerse}
+                    disabled={isLoadingVerse}
+                    data-testid="button-draw-verse"
+                  >
+                    <Sparkles className="w-5 h-5 mr-2 group-hover:animate-spin" />
+                    Tirer mon verset
+                  </Button>
+                </motion.div>
                 <Button
                   size="lg"
-                  className="w-full text-lg py-6 animate-pulse-glow gold-glow-hover group"
-                  onClick={getRandomVerse}
-                  disabled={isLoadingVerse}
-                  data-testid="button-draw-verse"
+                  variant="outline"
+                  className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10"
+                  onClick={() => window.location.href = "/about"}
+                  data-testid="button-discover"
                 >
-                  <Sparkles className="w-5 h-5 mr-2 group-hover:animate-spin" />
-                  Tirer mon verset
+                  Découvrir l'église
                 </Button>
-              </motion.div>
+              </div>
 
-              <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
-                <button
-                  onClick={prevImage}
-                  className="text-white/50 hover:text-primary transition-colors"
-                  data-testid="button-prev-image"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={prevImage}
+                    className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/70 hover:text-primary hover:border-primary transition-colors"
+                    data-testid="button-prev-image"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/70 hover:text-primary hover:border-primary transition-colors"
+                    data-testid="button-next-image"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
                 <div className="flex gap-2">
-                  {carouselImages.slice(0, 5).map((_, i) => (
+                  {heroImages.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentImageIndex(i)}
                       className={`w-2 h-2 rounded-full transition-all ${
-                        i === currentImageIndex % 5 ? "bg-primary w-6" : "bg-white/30"
+                        i === currentImageIndex ? "bg-primary w-8" : "bg-white/30"
                       }`}
                       data-testid={`button-carousel-dot-${i}`}
                     />
                   ))}
                 </div>
-                <button
-                  onClick={nextImage}
-                  className="text-white/50 hover:text-primary transition-colors"
-                  data-testid="button-next-image"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
               </div>
             </motion.div>
 
             <motion.div
-              className="text-center lg:text-left"
+              className="hidden lg:flex justify-end"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <h1
-                className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-none"
-                data-testid="text-hero-title"
-              >
-                <span className="block text-white/90">EXCELLE</span>
-                <span className="block text-gradient-gold">POUR</span>
-                <span className="block text-white/90">CHRIST</span>
-              </h1>
-              <p
-                className="text-lg md:text-xl text-white/60 mt-6 max-w-md"
-                data-testid="text-hero-subtitle"
-              >
-                Une oeuvre de foi, un espace de prière, d'écoute et d'amour où chacun peut reprendre souffle.
-              </p>
+              <div className="grid grid-cols-1 gap-4 max-w-sm">
+                <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-md p-6">
+                  <h3 className="text-primary font-semibold mb-2">Voeux 2026</h3>
+                  <p className="text-white/70 text-sm">
+                    Que cette nouvelle année soit remplie des bénédictions du Seigneur.
+                  </p>
+                  <img
+                    src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1767006976/photo_2025-12-29_12-06-43_nxzfsu.jpg"
+                    alt="Voeux 2026"
+                    className="w-full h-32 object-cover rounded-md mt-4"
+                  />
+                </div>
+                <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-md p-6">
+                  <h3 className="text-primary font-semibold mb-2">Prochain culte</h3>
+                  <p className="text-white/70 text-sm">Dimanche à 09h00</p>
+                  <p className="text-white/50 text-xs mt-1">Fifadji, Cotonou</p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -316,41 +367,6 @@ export default function Home() {
         >
           <ChevronDown className="w-8 h-8" />
         </motion.button>
-      </section>
-
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-6">
-          <AnimatedSection animation="fade-up" className="max-w-3xl mx-auto">
-            <div className="text-center mb-10">
-              <Mail className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
-                Recevez un <span className="text-gradient-gold">enseignement</span> chaque matin
-              </h2>
-              <p className="text-muted-foreground">
-                Inscrivez-vous à notre newsletter pour recevoir une parole inspirante et fortifiante chaque jour dans votre boîte email.
-              </p>
-            </div>
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <Input
-                type="email"
-                placeholder="Votre adresse email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                className="flex-1"
-                data-testid="input-newsletter-email"
-              />
-              <Button
-                type="submit"
-                className="gold-glow-hover"
-                disabled={isSubscribing}
-                data-testid="button-newsletter-submit"
-              >
-                {isSubscribing ? "Inscription..." : "S'abonner"}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </form>
-          </AnimatedSection>
-        </div>
       </section>
 
       <section className="py-24 bg-card relative overflow-hidden">
@@ -408,7 +424,7 @@ export default function Home() {
         <div className="relative z-10 container mx-auto px-6">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
             <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4 text-white">
               Programme de la <span className="text-gradient-gold">Semaine</span>
             </h2>
             <p className="text-white/60 text-lg">
@@ -519,29 +535,70 @@ export default function Home() {
               Notre <span className="text-gradient-gold">Blog</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Découvrez nos derniers articles et enseignements pour nourrir votre foi.
+              Découvrez les moments forts de notre communauté.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {blogPosts.map((post, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.slice(0, 3).map((post, index) => (
               <AnimatedSection key={post.title} animation="fade-up" delay={index * 0.1}>
                 <motion.div
                   whileHover={{ y: -5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Card className="p-6 h-full" data-testid={`card-blog-${index}`}>
-                    <span className="text-xs text-primary uppercase tracking-wider font-medium">
-                      {post.category}
-                    </span>
-                    <h3 className="text-lg font-semibold mt-2 mb-3">{post.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">{post.date}</span>
-                      <Button variant="ghost" size="sm" className="text-primary">
-                        Lire plus
-                        <ArrowRight className="w-4 h-4 ml-1" />
-                      </Button>
+                  <Card className="overflow-hidden h-full" data-testid={`card-blog-${index}`}>
+                    <div className="aspect-video relative">
+                      <img
+                        src={post.images[0]}
+                        alt={post.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-medium">
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground">{post.date}</span>
+                        <Button variant="ghost" size="sm" className="text-primary">
+                          Lire plus
+                          <ArrowRight className="w-4 h-4 ml-1" />
+                        </Button>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
+            {blogPosts.slice(3).map((post, index) => (
+              <AnimatedSection key={post.title} animation="fade-up" delay={(index + 3) * 0.1}>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Card className="overflow-hidden" data-testid={`card-blog-${index + 3}`}>
+                    <div className="flex">
+                      <div className="w-1/3 min-h-32">
+                        <img
+                          src={post.images[0]}
+                          alt={post.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1 p-4">
+                        <span className="text-xs text-primary uppercase tracking-wider font-medium">
+                          {post.category}
+                        </span>
+                        <h3 className="text-base font-semibold mt-1 mb-2">{post.title}</h3>
+                        <span className="text-xs text-muted-foreground">{post.date}</span>
+                      </div>
                     </div>
                   </Card>
                 </motion.div>
@@ -575,6 +632,41 @@ export default function Home() {
                 Nous rejoindre
               </Button>
             </motion.div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-6">
+          <AnimatedSection animation="fade-up" className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <Mail className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+                Recevez un <span className="text-gradient-gold">enseignement</span> chaque matin
+              </h2>
+              <p className="text-muted-foreground">
+                Inscrivez-vous à notre newsletter pour recevoir une parole inspirante et fortifiante chaque jour dans votre boîte email.
+              </p>
+            </div>
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+              <Input
+                type="email"
+                placeholder="Votre adresse email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                className="flex-1"
+                data-testid="input-newsletter-email"
+              />
+              <Button
+                type="submit"
+                className="gold-glow-hover"
+                disabled={isSubscribing}
+                data-testid="button-newsletter-submit"
+              >
+                {isSubscribing ? "Inscription..." : "S'abonner"}
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </form>
           </AnimatedSection>
         </div>
       </section>

@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
+import Teachings from "@/pages/Teachings";
 import Donate from "@/pages/Donate";
 import Join from "@/pages/Join";
 import NotFound from "@/pages/not-found";
@@ -27,6 +28,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
+      <Route path="/teachings" component={Teachings} />
       <Route path="/donate" component={Donate} />
       <Route path="/join" component={Join} />
       <Route component={NotFound} />
