@@ -1,15 +1,20 @@
-// postcss.config.cjs
+// /postcss.config.cjs
+
+// Importation du module 'path' pour la gestion des chemins, 
+// ET require.resolve pour s'assurer que PostCSS trouve le plugin.
+const path = require('path');
+
 module.exports = {
   plugins: {
-    // 1. Assurez-vous que postcss-preset-env est le premier
-    // Il gère les fonctionnalités CSS futures (comme la syntaxe 'from hsl')
-    'postcss-preset-env': {
-      stage: 3, // Supporte les spécifications W3C stables
+    // 1. On utilise require.resolve() pour obtenir le chemin absolu du module.
+    // L'objet [chemin résolu] est utilisé comme clé du plugin.
+    [require.resolve('postcss-preset-env', { paths: [__dirname] })]: {
+      stage: 3,
       features: {
-        'css-has': false // Optionnel, si vous avez des conflits avec :has()
+        'css-has': false
       }
     },
-    // 2. Les plugins classiques de Tailwind et Autoprefixer suivent
+    // 2. Les autres plugins restent
     tailwindcss: {},
     autoprefixer: {},
   },
