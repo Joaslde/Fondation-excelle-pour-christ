@@ -1,32 +1,34 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "path";
-// Suppression des plugins Replit qui causaient des erreurs de dépendance
+// /opt/render/project/src/vite.config.ts
+import { defineConfig } from 'vite';
+import { resolve } from 'path'; // S'assurer que 'path' est importé
 
 export default defineConfig({
   plugins: [
-    react(),
-    // Suppression de :
-    // runtimeErrorOverlay(),
-    // ... (process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined ? [...] : []),
-    // Ces lignes utilisaient les dépendances Replit non trouvées sur Render.
+    // ...
   ],
-  resolve: {
-    alias: {
-      "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
-    },
+  css: {
+    postcss: {
+      // AJOUTER L'OPTION 'plugins' ICI
+      plugins: [
+        require('postcss-preset-env')({
+          stage: 3,
+          features: {
+            'css-has': false
+          }
+        }),
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ],
+      // ET SURTOUT, DEFINIR LE CHEMIN DE RECHERCHE DU MODULE
+      // Ceci force PostCSS à chercher les modules à la racine
+      config: {
+        path: path.resolve(__dirname, 'postcss.config.cjs'),
+        ctx: {
+          // Utilise le dossier racine comme point de départ pour la recherche
+          // des plugins si besoin, mais surtout, cela force l'initialisation.
+        }
+      }
+    }
   },
-  root: path.resolve(import.meta.dirname, "client"),
-  build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true,
-  },
-  server: {
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
-  },
+  // ...
 });
