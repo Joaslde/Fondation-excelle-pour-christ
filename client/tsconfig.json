@@ -5,8 +5,14 @@
       "outDir": "dist",
       "composite": true,
       "module": "ESNext",
-      "types": ["vite/client"] // On se concentre uniquement sur le client ici
+      "types": ["vite/client", "node"],
+      "baseUrl": ".",
+      "paths": {
+          "@/*": ["./src/*"], 
+          "@shared/*": ["../shared/*"]
+      }
     },
-    "include": ["src"],
-    "exclude": []
+    "include": ["src/**/*"],
+    // Ceci est crucial pour ignorer les schémas Drizzle/Backend :
+    "exclude": ["../shared/**/*", "../server/**/*"] 
   }
