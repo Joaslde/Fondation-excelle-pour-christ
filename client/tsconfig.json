@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+      "rootDir": "src",
+      "outDir": "dist",
+      "composite": true,
+      "module": "ESNext",
+      "types": ["vite/client"] // On se concentre uniquement sur le client ici
+    },
+    "include": ["src"],
+    "exclude": []
+  }
